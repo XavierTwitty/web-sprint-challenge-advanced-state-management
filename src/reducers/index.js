@@ -1,9 +1,14 @@
-
 export const initialState = {
-}
+  smurfs: [],
+  isLoading: false,
+  error: "",
+};
 
-const reducer = ()=>{
-}
+const reducer = (state = initialState, action) => {
+    switch (action.type){
+        case 
+    }
+};
 
 export default reducer;
 
@@ -19,3 +24,4 @@ export default reducer;
 //5. Add in a reducer cases to accomidate the failed smurf api fetch.
 //6. Add in a reducer case to accomidate adding a smurf (including the name, nickname, position, summary and an internally generated id) into your smurf list.
 //7. Add in a reducer case that adds in a value to the error message.
+const myname = "x"
