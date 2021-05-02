@@ -1,3 +1,5 @@
+import { FETCH_START, FETCH_CHARACTERS, FETCH_ERROR } from "../actions/index";
+
 export const initialState = {
   smurfs: [],
   isLoading: false,
@@ -5,11 +7,39 @@ export const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    switch (action.type){
-        case 
-    }
+  switch (action.type) {
+    case FETCH_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case FETCH_CHARACTERS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        isLoading: false,
+      };
+    case FETCH_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case ADD_SMURF:
+      return [
+        ...state,
+        {
+          name: action.payload,
+          position: action.payload,
+          nickname: action.payload,
+          description: action.payload,
+          id: new Date(),
+        },
+      ];
+    default:
+      return state;
+  }
 };
-
 export default reducer;
 
 //Task List:
@@ -24,4 +54,3 @@ export default reducer;
 //5. Add in a reducer cases to accomidate the failed smurf api fetch.
 //6. Add in a reducer case to accomidate adding a smurf (including the name, nickname, position, summary and an internally generated id) into your smurf list.
 //7. Add in a reducer case that adds in a value to the error message.
-const myname = "x"
