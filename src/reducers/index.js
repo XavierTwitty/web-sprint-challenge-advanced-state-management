@@ -1,4 +1,9 @@
-import { FETCH_START, FETCH_CHARACTERS, FETCH_ERROR } from "../actions/index";
+import {
+  FETCH_START,
+  FETCH_CHARACTERS,
+  FETCH_ERROR,
+  ADD_SMURF,
+} from "../actions/index";
 
 export const initialState = {
   smurfs: [],
