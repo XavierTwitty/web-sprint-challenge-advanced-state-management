@@ -31,16 +31,19 @@ const reducer = (state = initialState, action) => {
         error: action.payload,
       };
     case ADD_SMURF:
-      return [
+      return {
         ...state,
-        {
-          name: action.payload,
-          position: action.payload,
-          nickname: action.payload,
-          description: action.payload,
-          id: new Date(),
-        },
-      ];
+        smurfs: [
+          ...state.smurfs,
+          {
+            name: action.payload,
+            position: action.payload,
+            nickname: action.payload,
+            description: action.payload,
+            id: new Date(),
+          },
+        ],
+      };
     default:
       return state;
   }

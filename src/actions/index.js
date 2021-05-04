@@ -10,9 +10,22 @@ export const FETCH_CHARACTERS = "FETCH_CHARACTERS";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const ADD_SMURF = "ADD_SMURF";
 
-export const fetchSmurfs = (dispatch) => {
+export const fetchSmurfs = () => (dispatch) => {
   dispatch({ type: FETCH_START });
-  axios.get("http://localhost:3333/smurfs").then((res) => {
-    console.log(res);
-  });
+  axios
+    .get("http://localhost:3333/smurfs")
+    .then((res) => {
+      dispatch({ type: FETCH_CHARACTERS, payload: res.data });
+    })
+    .catch((err) => {
+      dispatch({ type: FETCH_ERROR, payload: { err } });
+    });
+};
+
+export const addSmurf = (state) => {
+  return { type: ADD_SMURF, payload: state };
+};
+
+export const setError = (message) => {
+  return { type: FETCH_ERROR, payload: message };
 };

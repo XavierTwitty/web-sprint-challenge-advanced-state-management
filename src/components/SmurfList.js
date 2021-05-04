@@ -2,9 +2,14 @@ import React from "react";
 import Smurf from "./Smurf";
 import { connect } from "react-redux";
 import { fetchSmurfs } from "../actions";
+import { useEffect } from "react";
 
 const SmurfList = (props) => {
-  console.log(props);
+  console.log("this is props", props);
+
+  useEffect(() => {
+    props.fetchSmurfs();
+  }, []);
   const isLoading = false;
   const testSmurf = {
     id: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
@@ -32,7 +37,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(SmurfList);
+export default connect(mapStateToProps, { fetchSmurfs })(SmurfList);
 
 //Task List:
 //1. Connect the smurfs and loading state values to the SmurfList component.
