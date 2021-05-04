@@ -11,14 +11,14 @@ const SmurfList = (props) => {
     props.fetchSmurfs();
   }, []);
   const isLoading = false;
-  const testSmurf = {
-    id: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-    name: "Poppa Smurf",
-    position: "Village Leader",
-    nickname: "Pops",
-    description:
-      "Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.",
-  };
+  //   const testSmurf = {
+  //     id: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+  //     name: "Poppa Smurf",
+  //     position: "Village Leader",
+  //     nickname: "Pops",
+  //     description:
+  //       "Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.",
+  //   };
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -26,13 +26,15 @@ const SmurfList = (props) => {
 
   return (
     <div className="listContainer">
-      <Smurf smurf={testSmurf} />
+      {props.smurfs.map((item) => (
+        <Smurf smurf={item} key={item.id} />
+      ))}
     </div>
   );
 };
 const mapStateToProps = (state) => {
   return {
-    smurfs: [],
+    smurfs: state.smurfs,
     isLoading: state.isLoading,
   };
 };

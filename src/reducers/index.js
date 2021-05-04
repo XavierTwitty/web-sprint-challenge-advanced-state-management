@@ -33,16 +33,7 @@ const reducer = (state = initialState, action) => {
     case ADD_SMURF:
       return {
         ...state,
-        smurfs: [
-          ...state.smurfs,
-          {
-            name: action.payload,
-            position: action.payload,
-            nickname: action.payload,
-            description: action.payload,
-            id: new Date(),
-          },
-        ],
+        smurfs: [...state.smurfs, { ...action.payload, id: Date.now() }],
       };
     default:
       return state;
